@@ -15,4 +15,4 @@ jobs:
           server: www.s-creations.co.za
           user: ${{ secrets.ftp_username }}
           password: ${{ secrets.ftp_password }}
-          local_dir: "/Deploy"
+          local_dir: "./myportfolio"
