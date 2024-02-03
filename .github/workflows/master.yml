@@ -1,19 +1,24 @@
 name: CI -> Deploy to My website
 on:
   push:
-    branches: 
-        - master
+    branches:
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      # Here is the deployment action
-      - name: Upload from public_html via FTP
-        uses: airvzxf/ftp-deployment-action@latest
+      # Copy files to a temporary directory excluding ignored files
+      - name: Copy files to temporary directory
+        run: |
+          mkdir temp_deploy
+          rsync -av --exclude-from=.gitignore --exclude .git ./ temp_deploy
+      # FTP deployment action
+      - name: Upload from local to via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: www.s-creations.co.za
           user: ${{ secrets.ftp_username }}
           password: ${{ secrets.ftp_password }}
-          local_dir: "."
+          local_dir: temp_deploy
           remote_dir: "/Deploy/"
