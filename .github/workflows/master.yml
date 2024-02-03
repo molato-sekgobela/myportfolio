@@ -12,7 +12,7 @@ jobs:
       - name: Upload from public_html via FTP
         uses: airvzxf/ftp-deployment-action@latest
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          user: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local_dir: "./Deploy"
+          server: www.s-creations.co.za
+          user: ${{ secrets.ftp_username }}
+          password: ${{ secrets.ftp_password }}
+          local_dir: "/Deploy"
