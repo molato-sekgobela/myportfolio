@@ -18,7 +18,7 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: www.s-creations.co.za
-          user: ${{ secrets.ftp_username }}
-          password: ${{ secrets.ftp_password }}
+          user: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD}}
           local_dir: temp_deploy
           remote_dir: "/Deploy/"
